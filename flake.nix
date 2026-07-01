@@ -52,12 +52,12 @@
       installPhase = ''
       runHook preInstall
 
-      mkdir -p "$out/bin"
-      cp -r "$src"/* "$out/bin/"
-      mv "$out/bin/XR Animator - electron-v35.1.2-linux-x64_SA/" "$out/bin/XR_Animator_-_electron-v35.1.2-linux-x64_SA/"
-      chmod +x "$out/bin/XR_Animator_-_electron-v35.1.2-linux-x64_SA/electron"
+      mkdir -p "$out/opt" "$out/bin"
+      cp -r "$src"/* "$out/opt/"
+      mv "$out/opt/XR Animator - electron-v35.1.2-linux-x64_SA/" "$out/opt/XR_Animator_-_electron-v35.1.2-linux-x64_SA/"
+      chmod +x "$out/opt/XR_Animator_-_electron-v35.1.2-linux-x64_SA/electron"
 
-      wrapProgram "$out/bin/XR_Animator_-_electron-v35.1.2-linux-x64_SA/electron"
+      wrapProgram "$out/opt/XR_Animator_-_electron-v35.1.2-linux-x64_SA/electron" "$out/bin/xranimator"
 
       runHook postInstall
 
