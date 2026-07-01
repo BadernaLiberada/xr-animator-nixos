@@ -60,7 +60,7 @@
 
         makeWrapper $out/opt/xr-animator/electron $out/bin/xr-animator \
           --chdir $out/opt/xr-animator \
-          --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath deps}
+          --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath xraLibs}
       '';
 
       meta.mainProgram = "xr-animator";
