@@ -57,7 +57,8 @@
       mv "$out/opt/XR Animator - electron-v35.1.2-linux-x64_SA/" "$out/opt/XR_Animator_-_electron-v35.1.2-linux-x64_SA/"
       chmod +x "$out/opt/XR_Animator_-_electron-v35.1.2-linux-x64_SA/electron"
 
-      makeWrapper "$out/opt/XR_Animator_-_electron-v35.1.2-linux-x64_SA/electron" "$out/bin/xranimator"
+      makeWrapper "$out/opt/XR_Animator_-_electron-v35.1.2-linux-x64_SA/electron" "$out/bin/xranimator" \
+      --prefix LD_LIBRARY_PATH : "${pkgs.lib.makeLibraryPath xraLibs}"
 
       runHook postInstall
 
