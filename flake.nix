@@ -38,7 +38,7 @@
 
       src = pkgs.fetchurl {
         url = "https://github.com/ButzYung/SystemAnimatorOnline/releases/download/XR-Animator_v0.34.2/XR-Animator_v0.34.2_linux-x64.zip";
-        hash = "";
+        hash = "sha256-WqO/xyTL/s8WqCi8zVKVpx5DPMqB7psw5CvyP0IUWkc=";
       };
 
       nativeBuildInputs = with pkgs; [
