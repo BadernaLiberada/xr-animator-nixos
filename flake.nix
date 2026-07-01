@@ -51,7 +51,7 @@
 
       unpackPhase = ''
         unzip "$src"
-        cd XR-Animator_v0.34.2_linux-x64
+        cd "$(find . -maxdepth 1 -type d -name 'XR_Animator*' | head -n1)"
       '';
 
       installPhase = ''
