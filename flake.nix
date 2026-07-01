@@ -51,7 +51,7 @@
 
       unpackPhase = ''
         unzip "$src"
-        cd "$(find . -maxdepth 1 -type d -name 'XR_Animator*' | head -n1)"
+        cd "$(find . -maxdepth 1 -type d -name 'XR-Animator*' | head -n1)"
       '';
 
       installPhase = ''
