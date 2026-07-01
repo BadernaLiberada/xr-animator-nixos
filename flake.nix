@@ -53,7 +53,7 @@
       runHook preInstall
 
       mkdir -p "$out/bin"
-      cp "$src/XR-Animator_v0.34.2_linux-x64" "$out/bin/xranimator"
+      cp "$src" "$out/bin/xranimator"
       move "$out/bin/xranimator/XR Animator - electron-v35.1.2-linux-x64_SA/" "$out/bin/xranimator/XR_Animator_-_electron-v35.1.2-linux-x64_SA/"
       chmod +x "$out/bin/xranimator/XR_Animator_-_electron-v35.1.2-linux-x64_SA/electron"
 
