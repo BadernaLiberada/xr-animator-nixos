@@ -36,31 +36,31 @@
       pname = "xr-animator";
       version = "0.34.2";
 
-      src = pkgs.fetchurl {
+      src = pkgs.fetchzip {
         url = "https://github.com/ButzYung/SystemAnimatorOnline/releases/download/XR-Animator_v0.34.2/XR-Animator_v0.34.2_linux-x64.zip";
         hash = "sha256-WqO/xyTL/s8WqCi8zVKVpx5DPMqB7psw5CvyP0IUWkc=";
+        stripRoot = false;
       };
 
       nativeBuildInputs = with pkgs; [
-        unzip
         autoPatchelfHook
         makeWrapper
       ];
 
       buildInputs = xraLibs;
 
-      unpackPhase = ''
-        unzip "$src"
-        cd "$(find . -maxdepth 1 -type d -name 'XR-Animator*' | head -n1)"
-      '';
-
       installPhase = ''
-        mkdir -p $out/opt/xr-animator $out/bin
-        cp -r . $out/opt/xr-animator
+      runHook preInstall
 
-        makeWrapper $out/opt/xr-animator/electron $out/bin/xr-animator \
-          --chdir $out/opt/xr-animator \
-          --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath xraLibs}
+      mkdir -p "$out/bin"
+      cp "$src/XR-Animator_v0.34.2_linux-x64" "$out/bin/xranimator"
+      move "$out/bin/xranimator/XR Animator - electron-v35.1.2-linux-x64_SA/" "$out/bin/xranimator/XR_Animator_-_electron-v35.1.2-linux-x64_SA/"
+      chmod +x "$out/bin/xranimator/XR_Animator_-_electron-v35.1.2-linux-x64_SA/electron"
+
+      wrapProgram "$out/bin/xranimator/XR_Animator_-_electron-v35.1.2-linux-x64_SA/electron"
+
+      runHook postInstall
+
       '';
 
       meta.mainProgram = "xr-animator";
